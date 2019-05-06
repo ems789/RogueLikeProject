@@ -1,8 +1,8 @@
-Assets\Extenal Assets\PixelEffect\
-Assets\Extenal Assets\PixelHero\
-Assets\Extenal Assets\PixelItems\
-Assets\Extenal Assets\PixelMobs\
-Assets\PixelLevels\
+Assets/Extenal Assets/PixelEffect/
+Assets/Extenal Assets/PixelHero/
+Assets/Extenal Assets/PixelItems/
+Assets/Extenal Assets/PixelMobs/
+Assets/PixelLevels/
 
 # Created by https://www.gitignore.io/api/unity,windows,visualstudio
 # Edit at https://www.gitignore.io/?templates=unity,windows,visualstudio
