@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - DungeonManager
+  - Wall
+  - test
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Weapon
+  - Wall
+  - Enemy
+  - Marker
+  - Effect
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 3769857219
+    locked: 0
+  - name: Chest
+    uniqueID: 3779559981
+    locked: 0
+  - name: Maker
+    uniqueID: 2125798565
+    locked: 0
+  - name: Player
+    uniqueID: 1715631315
+    locked: 0
+  - name: Effect
+    uniqueID: 1060180525
+    locked: 0
