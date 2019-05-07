@@ -9,7 +9,7 @@ public class MonsterManager : MonoBehaviour
     public float chanceToCreateMonster = 0.01f;
     private Monster.MonsterType monsterType;
 
-    List<List<GameObject>> monsterPool = new List<List<GameObject>>();
+    List<GameObject[]> monsterPool = new List<GameObject[]>();
 
     private int maxPool = DungeonManager.width + DungeonManager.height;
     private double meleePoolMax = 0, rangerPoolMax = 0;
@@ -19,20 +19,20 @@ public class MonsterManager : MonoBehaviour
         meleePoolMax = maxPool * 0.7f;
         rangerPoolMax = maxPool * 0.3f;
 
-        PoolInit(monsterPool[(int)Monster.MonsterType.MELEE], meleePoolMax, Monster.MonsterType.MELEE);
-        PoolInit(monsterPool[(int)Monster.MonsterType.RANGER], rangerPoolMax, Monster.MonsterType.RANGER);
+        PoolInit(monsterPool[0], meleePoolMax);
+
     }
 
-    private void PoolInit(List<GameObject> monsterList, double max, Monster.MonsterType type)
+    private void PoolInit(List<GameObject[]> monsterList, double max)
     {
         int i = 0;
         for (i = 0; i < max; i++)
         {
-            GameObject obj = Instantiate(monster[(int)type]);
+            GameObject obj = Instantiate(monster[(int)Monster.MonsterType.MELEE]);
             obj.name += i;
             obj.SetActive(false);
 
-            monsterList.Add(obj);
+            monsterList[(int)Monster.MonsterType.MELEE].Add(obj);
         }
     }
 
