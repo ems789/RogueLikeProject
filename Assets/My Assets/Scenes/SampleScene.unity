@@ -112,6 +112,53 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &63356988
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 63356989}
+  - component: {fileID: 63356990}
+  m_Layer: 0
+  m_Name: MonsterManager
+  m_TagString: MonsterManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &63356989
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63356988}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.687407, y: 9.720916, z: 3.1178253}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &63356990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 63356988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82d725ec82cb9a48b8401c3815e6057, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monster:
+  - {fileID: 7314361055351775446, guid: bb27052d665edb8468cc4e5ba1e7e080, type: 3}
+  - {fileID: 2758549706675581433, guid: 628c4c6a057cdcb47a0e2dc66424522d, type: 3}
+  chanceToCreateMonster: 0.045
 --- !u!1 &119245891
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,15 +690,11 @@ MonoBehaviour:
   - {fileID: 7046749501532322852, guid: dceae4f356f4d3d4c947a13537e8ad26, type: 3}
   chest:
   - {fileID: 8372872945510370852, guid: b9f657662d822e6498165ab9d853708d, type: 3}
-  monster:
-  - {fileID: 7314361055351775446, guid: bb27052d665edb8468cc4e5ba1e7e080, type: 3}
-  - {fileID: 2758549706675581433, guid: 628c4c6a057cdcb47a0e2dc66424522d, type: 3}
   numberOfSteps: 5
   birthLimit: 4
   deathLimit: 3
   chanceToStartAlive: 0.4
   chanceToCreateChest: 0.35
-  chanceToCreateMonster: 0.045
 --- !u!4 &994661905
 Transform:
   m_ObjectHideFlags: 0

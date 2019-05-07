@@ -7,7 +7,6 @@ public class DungeonManager : MonoBehaviour
     public GameObject[] floorTiles;
     public GameObject[] wallTiles;
     public GameObject[] chest;
-    public GameObject[] monster;
 
     private Transform boardHolder;
     private Transform playerTrans;
@@ -17,7 +16,6 @@ public class DungeonManager : MonoBehaviour
 
     public float chanceToStartAlive = 0.4f; // 벽이 생성될 확률
     public float chanceToCreateChest = 0.5f;
-    public float chanceToCreateMonster = 0.01f;
 
     public static int width = 35, height = 35;
     private int tileCount = 0;
@@ -27,7 +25,7 @@ public class DungeonManager : MonoBehaviour
     private double minimumTile = width * height / 2.5; // 최소 깔려야 하는 타일의 수
 
     public void SetupDungeon()
-    {
+    {       
         boardHolder = new GameObject("Board").transform;
         playerTrans = GameObject.FindWithTag("Player").transform;
         MapBorderFill();
@@ -44,7 +42,7 @@ public class DungeonManager : MonoBehaviour
         } while (tileCount <= minimumTile);
         
         drawMapTiles(cellmap);        
-        ObjectSetting(cellmap);
+        TreasureSetting(cellmap);
     }
 
     public void InitializeMap()
@@ -218,7 +216,7 @@ public class DungeonManager : MonoBehaviour
 
 
     // 타일, 몬스터를 던전에 셋팅
-    public void ObjectSetting(bool[,] map)
+    public void TreasureSetting(bool[,] map)
     {
         GameObject toInstantiate = chest[Random.Range(0, chest.Length)];
 
@@ -237,20 +235,6 @@ public class DungeonManager : MonoBehaviour
                             GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, 0f), Quaternion.identity);
                             instance.transform.SetParent(boardHolder);
                         }
-                    }
-
-                    if(Random.Range(0f, 1f) < chanceToCreateMonster)
-                    {
-                        GameObject monsterInstantiate = Instantiate(monster[Random.Range(0, monster.Length)], new Vector3(x, y, 0f), Quaternion.identity);
-
-                        if (monsterInstantiate.GetComponent<Monster>().PlayerInScope())
-                        {
-                            Debug.Log(monsterInstantiate.GetComponent<Monster>().PlayerInScope());
-                            Destroy(monsterInstantiate);
-                        }
-                        else
-                            monsterInstantiate.transform.SetParent(boardHolder);
-
                     }
                 }
             }
