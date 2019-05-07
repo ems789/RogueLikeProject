@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public enum AttackType
+    public enum MonsterType
     {
         MELEE,
         RANGER,
         DASH
     }
-    public AttackType attackType;
+    public MonsterType monsterType;
 
     public GameObject projectile;
     private Rigidbody2D projectileRigid;
@@ -56,14 +56,15 @@ public class Monster : MonoBehaviour
         scope = 4.5f;
         patrolCoolTime = 5f;
 
-        if (attackType == AttackType.MELEE)
+        // 나중에 몬스터별로 초기화로 변경
+        if (monsterType == MonsterType.MELEE)
         {
             projectileLiveTime = 0.8f;
             shotSpeed = 100f; // 임시 몬스터 별로 다를 수 있음
             attackRange = 1.4f;
             attackCoolTime = 0.8f;
         }
-        else if(attackType == AttackType.RANGER)
+        else if(monsterType == MonsterType.RANGER)
         {
             projectileLiveTime = 2f;
             shotSpeed = 150f;

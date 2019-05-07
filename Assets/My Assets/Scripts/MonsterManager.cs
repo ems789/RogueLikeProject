@@ -5,11 +5,12 @@ using UnityEngine;
 public class MonsterManager : MonoBehaviour
 {
     public GameObject[] monster;
-
+    
     public float chanceToCreateMonster = 0.01f;
-
+    
     public void MonsterSetting()
     {
+
         for (int x = 0; x < DungeonManager.width; x++)
         {
             for(int y=0; y < DungeonManager.height; y++)
@@ -23,7 +24,8 @@ public class MonsterManager : MonoBehaviour
 
                         if (monsterInstantiate.GetComponent<Monster>().PlayerInScope())
                         {
-                            break;
+                            Debug.Log(monsterInstantiate.GetComponent<Monster>().PlayerInScope());
+                            Destroy(monsterInstantiate);
                         }
                         else
                             monsterInstantiate.transform.SetParent(gameObject.transform);
@@ -31,5 +33,6 @@ public class MonsterManager : MonoBehaviour
                 }
             }
         }
+        
     }
 }
