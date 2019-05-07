@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance = null;
 
     private DungeonManager dungeonScript;
+    private MonsterManager monsterScript;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         dungeonScript = GameObject.FindWithTag("DungeonManager").GetComponent<DungeonManager>();
+        monsterScript = GameObject.FindWithTag("MonsterManager").GetComponent<MonsterManager>();
 
         InitGame();
     }
@@ -25,5 +27,6 @@ public class GameManager : MonoBehaviour
     private void InitGame()
     {
         dungeonScript.SetupDungeon();
+        monsterScript.MonsterSetting();
     }
 }
