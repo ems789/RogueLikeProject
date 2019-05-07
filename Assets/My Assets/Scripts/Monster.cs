@@ -8,7 +8,8 @@ public class Monster : MonoBehaviour
     {
         MELEE,
         RANGER,
-        DASH
+        //DASH,
+        NumberOfTypes,
     }
     public MonsterType monsterType;
 

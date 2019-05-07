@@ -24,7 +24,7 @@ TagManager:
   - Enemy
   - Marker
   - Effect
-  - 
+  - Treasure
   - 
   - 
   - 
@@ -49,10 +49,10 @@ TagManager:
   - name: Background
     uniqueID: 3769857219
     locked: 0
-  - name: Chest
+  - name: Marker
     uniqueID: 3779559981
     locked: 0
-  - name: Maker
+  - name: Chest
     uniqueID: 2125798565
     locked: 0
   - name: Player
