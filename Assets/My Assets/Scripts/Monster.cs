@@ -9,7 +9,7 @@ public class Monster : MonoBehaviour
         MELEE,
         RANGER,
         //DASH,
-        NumberOfTypes,
+        //NumberOfTypes,
     }
     public MonsterType monsterType;
 
