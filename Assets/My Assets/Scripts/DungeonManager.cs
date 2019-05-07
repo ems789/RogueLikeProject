@@ -25,7 +25,6 @@ public class DungeonManager : MonoBehaviour
     public static bool[,] cellmap = new bool[width, height]; // true는 벽 false는 타일
     private bool[,] checkedTile = new bool[width, height];
     private double minimumTile = width * height / 2.5; // 최소 깔려야 하는 타일의 수
-    aaaaaaaaaaa
 
     public void SetupDungeon()
     {
