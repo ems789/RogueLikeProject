@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ffbdfd3f48b7c4429c1ed8ac9fb0fb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackType: 1
+  monsterType: 1
   projectile: {fileID: 3943608907208567714, guid: e6e7911aeb3f0b944a2f42f183d5024c,
     type: 3}
   hp: 20
