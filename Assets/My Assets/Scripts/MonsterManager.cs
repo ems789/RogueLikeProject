@@ -6,38 +6,29 @@ public class MonsterManager : MonoBehaviour
 {
     public GameObject[] monster;
 
+    private ObjectPool[] monsterPool;
+
+    private int monsterPoolCnt = (int)Monster.MonsterType.NumberOfTypes;
+
     public float chanceToCreateMonster = 0.01f;
     private Monster.MonsterType monsterType;
-
-    List<List<GameObject>> monsterPool = new List<List<GameObject>>();
-
+    
     private int maxPool = DungeonManager.width + DungeonManager.height;
     private double meleePoolMax = 0, rangerPoolMax = 0;
 
     private void Start()
     {
+        monsterPool = new ObjectPool[monsterPoolCnt];
+        for(int i=0; i<monsterPoolCnt; i++)
+            monsterPool[i] = new ObjectPool();
+        
+        
         meleePoolMax = maxPool * 0.7f;
         rangerPoolMax = maxPool * 0.3f;
 
-
-        PoolInit(monsterPool[(int)Monster.MonsterType.MELEE], meleePoolMax, Monster.MonsterType.MELEE);
-        PoolInit(monsterPool[(int)Monster.MonsterType.RANGER], rangerPoolMax, Monster.MonsterType.RANGER);
-
+        monsterPool[0].InitPool(monster[0], (int)meleePoolMax); // 동적배열을 초기화 하지 않아서?
+        monsterPool[1].InitPool(monster[1], (int)rangerPoolMax);
     }
-
-    private void PoolInit(List<GameObject> monsterList, double max, Monster.MonsterType type)
-    {
-        int i = 0;
-        for (i = 0; i < max; i++)
-        {
-            GameObject obj = Instantiate(monster[(int)type]);
-            obj.name += i;
-            obj.SetActive(false);
-
-            monsterList.Add(obj);
-        }
-    }
-
 
     public void MonsterSetting()
     {
@@ -63,7 +54,7 @@ public class MonsterManager : MonoBehaviour
                             mel++;
                         }
 
-                        GameObject monsterObj = monsterPool[(int)monsterType].Find(item => item.activeSelf == false);                       
+                        GameObject monsterObj = Instantiate(monster[(int)monsterType], new Vector3(x, y, 0f), Quaternion.identity);
 
                         if (monsterObj == null)
                             return;
