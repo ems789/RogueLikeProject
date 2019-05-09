@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoolManager : MonoBehaviour
+public class ObjectPool : MonoBehaviour
 {
-    private List<GameObject> list = new List<GameObject>();
-    private GameObject obj; // 풀에 오브젝트가 없을 경우를 대비
+    public List<GameObject> list = new List<GameObject>();
 
     public void InitPool(GameObject _obj, int poolSize)
     {   
         for (int i=0; i<poolSize; i++)
         {
-            obj = Instantiate(_obj);
+            GameObject obj = Instantiate(_obj);
             obj.name += i;            
             obj.SetActive(false);
 
@@ -19,9 +18,9 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    public void ShowObject(int posX, int posY)
+    public void GetObject(int posX, int posY)
     {
-        obj = list.Find(item => item.activeSelf == false);
+        GameObject obj = list.Find(item => item.activeSelf == false);
 
         //if (obj == null)
         //    return;
