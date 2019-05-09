@@ -22,8 +22,8 @@ public class ObjectPool : MonoBehaviour
     {
         GameObject obj = list.Find(item => item.activeSelf == false);
 
-        //if (obj == null)
-        //    return;
+        if (obj == null)
+            return;
 
         obj.transform.position = new Vector3(posX, posY, 0f);
         obj.SetActive(true);

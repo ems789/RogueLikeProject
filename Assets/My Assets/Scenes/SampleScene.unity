@@ -694,7 +694,7 @@ MonoBehaviour:
   birthLimit: 4
   deathLimit: 3
   chanceToStartAlive: 0.4
-  chanceToCreateChest: 0.35
+  chanceToCreateChest: 0.25
 --- !u!4 &994661905
 Transform:
   m_ObjectHideFlags: 0
@@ -722,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 515260828, guid: adc07983ea61e4343984de9c98808d85, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4485083676467356, guid: adc07983ea61e4343984de9c98808d85, type: 3}
       propertyPath: m_LocalPosition.x
@@ -831,6 +831,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.a
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132688627, guid: adc07983ea61e4343984de9c98808d85, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132688627, guid: adc07983ea61e4343984de9c98808d85, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: adc07983ea61e4343984de9c98808d85, type: 3}

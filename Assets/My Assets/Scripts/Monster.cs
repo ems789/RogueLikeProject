@@ -13,6 +13,7 @@ public class Monster : MonoBehaviour
     }
     public MonsterType monsterType;
 
+    // 탄환에 오브젝트풀 적용 필요
     public GameObject projectile;
     private Rigidbody2D projectileRigid;
 
@@ -165,7 +166,7 @@ public class Monster : MonoBehaviour
         currentHP -= damage;
         if(currentHP <= 0)
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
         Debug.Log(currentHP);
     }

@@ -15,14 +15,14 @@ public class DungeonManager : MonoBehaviour
     public int birthLimit = 4, deathLimit = 3;
 
     public float chanceToStartAlive = 0.4f; // 벽이 생성될 확률
-    public float chanceToCreateChest = 0.5f;
+    public float chanceToCreateChest = 0.25f;
 
     public static int width = 35, height = 35;
     private int tileCount = 0;
 
     public static bool[,] cellmap = new bool[width, height]; // true는 벽 false는 타일
     private bool[,] checkedTile = new bool[width, height];
-    private double minimumTile = width * height / 2.5; // 최소 깔려야 하는 타일의 수
+    private double minimumTile = width * height / 2.5; // 최소한 깔려야 하는 타일의 수
 
     public void SetupDungeon()
     {       
@@ -230,7 +230,7 @@ public class DungeonManager : MonoBehaviour
                     int nbs = countAliveNeighbours(map, x, y);
                     if(nbs >= treasureHiddenLimit)
                     {
-                        if (Random.Range(0f, 1f) < chanceToStartAlive)
+                        if (Random.Range(0f, 1f) < chanceToCreateChest)
                         {
                             GameObject instance = Instantiate(toInstantiate, new Vector3(x, y, 0f), Quaternion.identity);
                             instance.transform.SetParent(boardHolder);

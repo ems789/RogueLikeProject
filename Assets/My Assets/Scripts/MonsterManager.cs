@@ -10,6 +10,7 @@ public class MonsterManager : MonoBehaviour
     private int monsterPoolCnt = (int)Monster.MonsterType.NumberOfTypes;
 
     public float chanceToCreateMonster = 0.01f;
+
     private Monster.MonsterType monsterType;
     
     private int maxPool = DungeonManager.width + DungeonManager.height;
@@ -31,7 +32,6 @@ public class MonsterManager : MonoBehaviour
 
     public void MonsterSetting()
     {
-        int mel=0, rag=0;
         for (int x = 0; x < DungeonManager.width; x++)
         {
             for(int y=0; y < DungeonManager.height; y++)
@@ -43,24 +43,14 @@ public class MonsterManager : MonoBehaviour
                         float chance = Random.Range(0f, 1f);
 
                         if (chance >= 0 && chance <= 0.3f)
-                        {
                             monsterType = Monster.MonsterType.RANGER;
-                            rag++;
-                        }
                         else if (chance > 0.3 && chance < 1.0f)
-                        {
                             monsterType = Monster.MonsterType.MELEE;
-                            mel++;
-                        }
 
-                        Debug.Log(monsterPool[(int)monsterType].list);
                         monsterPool[(int)monsterType].GetObject(x, y);                      
                     }
                 }
             }
-        }
-
-        Debug.Log(mel + " " + rag);
-        
+        }       
     }
 }

@@ -6,10 +6,10 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
-    public int hp;
-    public int currentHP;
-    public int mp;
-    public int currentMP;
+    public int playerParts;
+
+    public int hp, currentHP;
+    public int mp, currentMP;
 
     public int attackDamage;
     public int def;
@@ -23,6 +23,12 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
 
         currentHP = hp;
+
+        for (int i = 0; i < transform.childCount; i++) 
+        {
+            if (transform.GetChild(i).tag == "Player") // 자식 중 플레이어에 해당하는 오브젝트만
+                playerParts++;
+        }
     }
 
     public void TakeDamage(int enemyAttackDamage)
@@ -39,11 +45,10 @@ public class Player : MonoBehaviour
         if (currentHP <= 0)
         {
             Debug.Log("체력 0 미만, 게임오버");
-            // 게임 오버 처리
+            // 게임 오버 처리 추가
         }
 
-        // 피격 처리(연결된 자식들)
-        for (int i = 0; i < transform.childCount -3; i++) // 임시, 나중에 태그로 플레이어 검사해서 그것만 알파처리
+        for (int i = 0; i <= playerParts; i++) 
         {
             StartCoroutine(HitCoroutine(i));
         }
@@ -84,12 +89,5 @@ public class Player : MonoBehaviour
         newColor = new Color32(255, 255, 255, 255);
         childrenSprite[index].color = newColor;
         yield return new WaitForSeconds(0.1f);
-
-
-
     }
-
-
-
-
 }
