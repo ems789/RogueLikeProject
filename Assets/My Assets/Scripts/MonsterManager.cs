@@ -7,7 +7,7 @@ public class MonsterManager : MonoBehaviour
     public GameObject[] monster;
     private ObjectPool[] monsterPool;
 
-    private int monsterPoolCnt = (int)Monster.MonsterType.NumberOfTypes;
+    private int poolCnt;
 
     public float chanceToCreateMonster = 0.01f;
 
@@ -18,8 +18,9 @@ public class MonsterManager : MonoBehaviour
 
     private void Awake()
     {
-        monsterPool = new ObjectPool[monsterPoolCnt];
-        for(int i=0; i<monsterPoolCnt; i++)
+        poolCnt = monster.Length;
+        monsterPool = new ObjectPool[poolCnt];
+        for(int i=0; i<poolCnt; i++)
             monsterPool[i] = new ObjectPool();
         
         
