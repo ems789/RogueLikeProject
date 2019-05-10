@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ProjectlePool : MonoBehaviour
 {
+
     public GameObject[] projectile;
-    private ObjectPool[] projectilePool;
+    private static ObjectPool[] projectilePool;
 
     private int projectileCnt = 10;
     private int poolCnt;
