@@ -13,10 +13,6 @@ public class Monster : MonoBehaviour
     }
     public MonsterType monsterType;
 
-    // 탄환에 오브젝트풀 적용 필요
-    public GameObject projectile;
-    private Rigidbody2D projectileRigid;
-
     private Animator animator;
     private Transform targetTrans;
     private Vector3 targetVec;
@@ -38,7 +34,7 @@ public class Monster : MonoBehaviour
     private bool isMove = false;
     private bool isPatrol = false;
 
-    private float projectileLiveTime;
+    private float ProjectileLiveTime;
     private float shotSpeed;
 
     private float checkTime;
@@ -61,14 +57,14 @@ public class Monster : MonoBehaviour
         // 나중에 몬스터별로 초기화로 변경
         if (monsterType == MonsterType.MELEE)
         {
-            projectileLiveTime = 0.8f;
+            ProjectileLiveTime = 0.8f;
             shotSpeed = 100f; // 임시 몬스터 별로 다를 수 있음
             attackRange = 1.4f;
             attackCoolTime = 0.8f;
         }
         else if(monsterType == MonsterType.RANGER)
         {
-            projectileLiveTime = 2f;
+            ProjectileLiveTime = 2f;
             shotSpeed = 150f;
             attackRange = 3f;
             attackCoolTime = 1.0f;
@@ -205,17 +201,17 @@ public class Monster : MonoBehaviour
 
     private void Shot()
     {
-        GameObject projectileCopy = Instantiate(projectile);
-        projectileCopy.transform.SetParent(gameObject.transform);
-        projectileCopy.transform.position = gameObject.transform.position;       
+        // 리스트에 있는 발사 예정중인 다음 발사체 얻어오기
+        GameObject projectle = ProjectlePool.ProjectilePool[(int)monsterType].PeekObject();
+        Rigidbody2D ProjectileRigid = projectle.GetComponent<Rigidbody2D>();
 
-        FaceObject(projectileCopy);        
-
-        projectileRigid = projectileCopy.GetComponent<Rigidbody2D>();
+        projectle.GetComponent<Projectile>().InitProjectile(attackDamage, attackRange);
+        ProjectlePool.ProjectilePool[(int)monsterType].GetObject(transform.position.x, transform.position.y);
+        FaceObject(projectle);
+        
+        // 타겟 위치로 발사
         Vector2 ToPlayerDir = targetVec - new Vector3(transform.position.x, transform.position.y);        
-        projectileRigid.AddForce(ToPlayerDir.normalized * shotSpeed);        
-
-        Destroy(projectileCopy, projectileLiveTime);        
+        ProjectileRigid.AddForce(ToPlayerDir.normalized * shotSpeed);              
     }
 
     // 오브젝트가 대상을 바라보도록 회전

@@ -18,15 +18,21 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    public void GetObject(int posX, int posY)
+    public void GetObject(float posX, float posY)
     {
         GameObject obj = list.Find(item => item.activeSelf == false);
-
+        
         if (obj == null)
             return;
 
         obj.transform.position = new Vector3(posX, posY, 0f);
         obj.SetActive(true);
+    }
+
+    public GameObject PeekObject()
+    {
+        GameObject obj = list.Find(item => item.activeSelf == false);
+        return obj;
     }
 
 

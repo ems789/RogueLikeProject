@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class ProjectlePool : MonoBehaviour
 {
+    public GameObject[] Projectile;
+    public static ObjectPool[] ProjectilePool;
 
-    public GameObject[] projectile;
-    private static ObjectPool[] projectilePool;
-
-    private int projectileCnt = 10;
+    private int ProjectileCnt = 10;
     private int poolCnt;
 
     private void Start()
     {
-        poolCnt = projectile.Length;
+        poolCnt = Projectile.Length;
 
-        projectilePool = new ObjectPool[poolCnt];
+        ProjectilePool = new ObjectPool[poolCnt];
         for (int i = 0; i < poolCnt; i++)
-            projectilePool[i] = new ObjectPool();
+            ProjectilePool[i] = new ObjectPool();
 
         for(int i=0; i<poolCnt; i++)
         {
-            projectilePool[i].InitPool(projectile[i], projectileCnt);
+            ProjectilePool[i].InitPool(Projectile[i], ProjectileCnt);
         }                     
     }
 }
