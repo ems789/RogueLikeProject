@@ -5,27 +5,44 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     private int damage;
-    private float range;
+    private float range;    
+    private float liveTime;
+    private float timeCheck = 0;
+
+    private void Update()
+    {
+        timeCheck += Time.deltaTime;
+        if(timeCheck > liveTime)
+        {
+            InitProject();
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.transform.tag == "Player")
         {
             Player.instance.TakeDamage(damage);
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0); // 재활용할것이므로 되돌리기 전에 바라보는 방향 초기화
-            gameObject.SetActive(false);
+            InitProject();
         }
         else if (other.transform.tag == "Wall")
         {
-            gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
-            gameObject.SetActive(false);
+            InitProject();
         }               
     }
 
-    public void InitProjectile(int _damage, float _range)
+    private void InitProject()
+    {
+        timeCheck = 0;
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, 0); // 재활용할것이므로 되돌리기 전에 바라보는 방향 초기화
+        gameObject.SetActive(false);
+    }
+
+    public void SetProject(int _damage, float _range, float _liveTime)
     {
         damage = _damage;
         range = _range;
+        liveTime = _liveTime;
     }
 
     // 사거리 적용 추가
