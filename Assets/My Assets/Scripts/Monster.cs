@@ -42,7 +42,7 @@ public class Monster : MonoBehaviour
     private float patrolCoolTime;
     private float movingTime;
 
-    private void Awake()
+    private void Start()
     {
         animator = GetComponent<Animator>();
 
@@ -53,6 +53,9 @@ public class Monster : MonoBehaviour
         currentHP = hp;
         scope = 4.5f;
         patrolCoolTime = 5f;
+
+        if (PlayerInScope())
+            gameObject.SetActive(false);
 
         // 나중에 몬스터별로 초기화로 변경
         if (monsterType == MonsterType.MELEE)
