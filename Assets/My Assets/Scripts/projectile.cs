@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
         timeCheck += Time.deltaTime;
         if(timeCheck > liveTime)
         {
-            InitProject();
+            SetProject();
         }
     }
 
@@ -23,15 +23,15 @@ public class Projectile : MonoBehaviour
         if (other.transform.tag == "Player")
         {
             Player.instance.TakeDamage(damage);
-            InitProject();
+            SetProject();
         }
         else if (other.transform.tag == "Wall")
         {
-            InitProject();
+            SetProject();
         }               
     }
 
-    private void InitProject()
+    private void SetProject()
     {
         timeCheck = 0;
         gameObject.transform.rotation = Quaternion.Euler(0, 0, 0); // 재활용할것이므로 되돌리기 전에 바라보는 방향 초기화
