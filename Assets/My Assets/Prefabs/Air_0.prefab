@@ -142,8 +142,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   monsterType: 1
-  projectile: {fileID: 3943608907208567714, guid: e6e7911aeb3f0b944a2f42f183d5024c,
-    type: 3}
   hp: 20
   attackDamage: 5
   moveSpeed: 2
@@ -170,6 +168,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &4724117925221151715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6824501453592597109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4927432ee7f99884eacff6ac8c8b3b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3919698248649730130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,6 +274,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 213f834bd8aacc04ebe71519d7bdcc60, type: 3}
+--- !u!1 &6824501453592597109 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7552799496489073191, guid: 213f834bd8aacc04ebe71519d7bdcc60,
+    type: 3}
+  m_PrefabInstance: {fileID: 3919698248649730130}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6576436951121039350 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7863744933644887972, guid: 213f834bd8aacc04ebe71519d7bdcc60,
