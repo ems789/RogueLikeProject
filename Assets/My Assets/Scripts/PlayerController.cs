@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         // 뒤에 있는 적이 맞지 않게 하기 위해 약간 대기 후 공격 전환
         yield return new WaitForSeconds(0.03f); 
         isAttack = true;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         isAttack = false;
     }
 }
