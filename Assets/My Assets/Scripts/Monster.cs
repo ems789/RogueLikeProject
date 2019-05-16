@@ -27,6 +27,7 @@ public class Monster : MonoBehaviour
     public int attackDamage;
     private float attackRange;    
     public float moveSpeed;
+    public bool isBoss = false;
 
     public float delayInAdvance; // 선딜
     public float delayLator; // 후딜
@@ -61,17 +62,23 @@ public class Monster : MonoBehaviour
         if (monsterType == MonsterType.MELEE)
         {
             projectileLiveTime = 0.8f;
-            shotSpeed = 100f; // 임시 몬스터 별로 다를 수 있음
+            shotSpeed = 100f; // *임시* 몬스터 별로 다를 수 있음
             attackRange = 1.4f;
+            Debug.Log(gameObject.transform.localScale.x);
             attackCoolTime = 0.8f;
         }
         else if(monsterType == MonsterType.RANGER)
         {
             projectileLiveTime = 2f;
             shotSpeed = 150f;
-            attackRange = 3f;
+            attackRange = 3.0f;
             attackCoolTime = 1.0f;
+        }
 
+        if (isBoss)
+        {
+            attackRange += 1; // *임시* 스케일 증가에 따른 공격 범위 증가
+            shotSpeed = 200f;
         }
     }
 
