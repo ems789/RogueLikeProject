@@ -10,7 +10,9 @@ public class Weapon : MonoBehaviour
     public int weaponDamage;
     private bool isAttack = false;
     private int enemyHP;
-    
+
+    //test
+    Vector2 lookDirection = new Vector2(0, 0);
 
     private void Start()
     {
