@@ -11,7 +11,10 @@ public class Monster : MonoBehaviour
         //DASH,
         NumberOfTypes,
     }
+
+    // 타입 관련
     public MonsterType monsterType;
+    public bool isBoss = false;
 
     private Animator animator;
     private Transform targetTrans;
@@ -22,12 +25,13 @@ public class Monster : MonoBehaviour
     private float scope;
     private float distance;
 
+    // 스테이터스
     public int hp;
     private int currentHP;
     public int attackDamage;
     private float attackRange;    
     public float moveSpeed;
-    public bool isBoss = false;
+    
 
     public float delayInAdvance; // 선딜
     public float delayLator; // 후딜
