@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class MonsterManager : MonoBehaviour
 {
+    public static MonsterManager instance = null;
+
     public GameObject[] monster;
     private ObjectPool[] monsterPool;
 
     private int poolCnt;
+    private int monsterCnt;
 
     public float chanceToCreateMonster = 0.01f;
 
@@ -18,6 +21,11 @@ public class MonsterManager : MonoBehaviour
 
     private void Awake()
     {
+        if (instance = null)
+            instance = this;
+        else if (instance != null)
+            Destroy(gameObject);
+
         poolCnt = monster.Length;
         monsterPool = new ObjectPool[poolCnt];
         for(int i=0; i<poolCnt; i++)
@@ -48,10 +56,12 @@ public class MonsterManager : MonoBehaviour
                         else if (chance > 0.3 && chance < 1.0f)
                             monsterType = Monster.MonsterType.MELEE;
 
-                        monsterPool[(int)monsterType].GetObject(x, y);                      
+                        monsterPool[(int)monsterType].GetObject(x, y);
+                        monsterCnt++;
                     }
                 }
             }
-        }       
+        }
+        Debug.Log("몬스터 수 : " + monsterCnt);
     }
 }

@@ -50,7 +50,6 @@ public class Monster : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
-
         targetTrans = GameObject.FindWithTag("Player").transform;
         targetVec = targetTrans.position;
         distance = Vector3.Distance(targetVec, gameObject.transform.position);
