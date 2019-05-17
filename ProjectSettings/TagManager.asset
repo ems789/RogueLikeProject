@@ -9,6 +9,7 @@ TagManager:
   - Wall
   - test
   - MonsterManager
+  - Exit
   layers:
   - Default
   - TransparentFX

@@ -221,6 +221,7 @@ public class DungeonManager : MonoBehaviour
     public void ObjectSetting(bool[,] map)
     {
         GameObject toInstantiate = chest[Random.Range(0, chest.Length)];
+
         GameObject exitInstantiate = Instantiate(exit, new Vector3(xTileMax, yTileMax, 0f), Quaternion.identity);
         map[xTileMax, yTileMax] = true; // 출구가 깔린곳을 벽으로 지정해서 아무 오브젝트도 생성되지 않도록
 
