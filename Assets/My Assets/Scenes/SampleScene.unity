@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorTiles:
-  - {fileID: 2524283527644679988, guid: 324820ad0c5ef4d4bab60801b577230e, type: 3}
+  - {fileID: 1751422242376819414, guid: cd81870d890ab3944b8511287e85f9f9, type: 3}
   wallTiles:
   - {fileID: 7046749501532322852, guid: dceae4f356f4d3d4c947a13537e8ad26, type: 3}
   chest:

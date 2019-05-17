@@ -289,6 +289,6 @@ public class DungeonManager : MonoBehaviour
             TileCheck(x, y + 1);
             TileCheck(x - 1, y);
             TileCheck(x, y - 1);
-        }
+        }       
     }
 }
