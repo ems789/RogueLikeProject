@@ -7,6 +7,7 @@ public class DungeonManager : MonoBehaviour
     public GameObject[] floorTiles;
     public GameObject[] wallTiles;
     public GameObject[] chest;
+    public GameObject exit;
 
     private Transform boardHolder;
     private Transform playerTrans;
@@ -18,10 +19,11 @@ public class DungeonManager : MonoBehaviour
     public float chanceToCreateChest = 0.25f;
 
     public static int width = 35, height = 35;
+    private int xTileMax = 15, yTileMax = 15;
     private int tileCount = 0;
 
     public static bool[,] cellmap = new bool[width, height]; // true는 벽 false는 타일
-    private bool[,] checkedTile = new bool[width, height];
+    private bool[,] checkedTile = new bool[width, height]; // 이미 순회한 타일은 true로 설정
     private double minimumTile = width * height / 2.5; // 최소한 깔려야 하는 타일의 수
 
     public void SetupDungeon()
@@ -42,7 +44,7 @@ public class DungeonManager : MonoBehaviour
         } while (tileCount <= minimumTile);
         
         drawMapTiles(cellmap);        
-        TreasureSetting(cellmap);
+        ObjectSetting(cellmap);
     }
 
     public void InitializeMap()
@@ -215,10 +217,12 @@ public class DungeonManager : MonoBehaviour
     }
 
 
-    // 타일, 몬스터를 던전에 셋팅
-    public void TreasureSetting(bool[,] map)
+    // 보물, 출구를 던전에 셋팅
+    public void ObjectSetting(bool[,] map)
     {
         GameObject toInstantiate = chest[Random.Range(0, chest.Length)];
+        GameObject exitInstantiate = Instantiate(exit, new Vector3(xTileMax, yTileMax, 0f), Quaternion.identity);
+        map[xTileMax, yTileMax] = true; // 출구가 깔린곳을 벽으로 지정해서 아무 오브젝트도 생성되지 않도록
 
         int treasureHiddenLimit = 5;
         for(int x=0; x<width; x++)
@@ -274,7 +278,7 @@ public class DungeonManager : MonoBehaviour
     }
 
     void TileCheck(int x, int y)
-    {
+    {        
         if (x >= width || y >= height || x < 0 || y < 0)
             return;
         else if (cellmap[x, y] == true) // 벽이면 리턴
@@ -283,6 +287,13 @@ public class DungeonManager : MonoBehaviour
             return;
         else
         {
+            // 가장 먼거리에 있는 타일인지 확인 
+            if ((x + y) > (xTileMax + yTileMax))
+            {
+                xTileMax = x;
+                yTileMax = y;
+            }
+
             checkedTile[x, y] = true;
             tileCount++;
             TileCheck(x + 1, y);

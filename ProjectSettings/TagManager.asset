@@ -49,6 +49,9 @@ TagManager:
   - name: Background
     uniqueID: 3769857219
     locked: 0
+  - name: Exit
+    uniqueID: 1470712809
+    locked: 0
   - name: Chest
     uniqueID: 3779559981
     locked: 0
