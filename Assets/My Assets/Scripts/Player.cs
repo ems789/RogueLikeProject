@@ -59,29 +59,30 @@ public class Player : MonoBehaviour
     {
         SpriteRenderer[] childrenSprite = gameObject.GetComponentsInChildren<SpriteRenderer>();
         Color newColor;
+        byte alphaColor = 240;
 
         newColor = childrenSprite[index].color;
-        newColor = new Color32(255, 0, 0, 230);
+        newColor = new Color32(255, 0, 0, alphaColor);
         childrenSprite[index].color = newColor;
         yield return new WaitForSeconds(0.1f);
 
         newColor = childrenSprite[index].color;
-        newColor = new Color32(255, 255, 255, 230);
+        newColor = new Color32(255, 255, 255, alphaColor);
         childrenSprite[index].color = newColor;
         yield return new WaitForSeconds(0.1f);
 
         newColor = childrenSprite[index].color;
-        newColor = new Color32(255, 0, 0, 230);
+        newColor = new Color32(255, 0, 0, alphaColor);
         childrenSprite[index].color = newColor;
         yield return new WaitForSeconds(0.1f);
 
         newColor = childrenSprite[index].color;
-        newColor = new Color32(255, 255, 255, 230);
+        newColor = new Color32(255, 255, 255, alphaColor);
         childrenSprite[index].color = newColor;
         yield return new WaitForSeconds(0.1f);
 
         newColor = childrenSprite[index].color;
-        newColor = new Color32(255, 0, 0, 230);
+        newColor = new Color32(255, 0, 0, alphaColor);
         childrenSprite[index].color = newColor;
         yield return new WaitForSeconds(0.1f);
 
