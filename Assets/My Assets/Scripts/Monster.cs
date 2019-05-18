@@ -58,8 +58,12 @@ public class Monster : MonoBehaviour
         scope = 4.5f;
         patrolCoolTime = 5f;
 
+        // 플레이어 근처에 생성되면 제거
         if (PlayerInScope())
+        {
             gameObject.SetActive(false);
+            //MonsterManager.instance.monsterCnt -= 1; ///////////bug
+        }
 
         // 나중에 몬스터별로 초기화로 변경
         if (monsterType == MonsterType.MELEE)
@@ -176,6 +180,13 @@ public class Monster : MonoBehaviour
         if(currentHP <= 0)
         {
             gameObject.SetActive(false);
+            MonsterManager.instance.monsterCnt--;
+
+            if(MonsterManager.instance.monsterCnt <= 5)
+            {
+                Collider exitCol = GameObject.FindWithTag("Exit").GetComponent<Collider>();
+                exitCol.isTrigger = true;                
+            }
         }
         Debug.Log(currentHP);
     }

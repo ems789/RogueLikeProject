@@ -10,7 +10,7 @@ public class MonsterManager : MonoBehaviour
     private ObjectPool[] monsterPool;
 
     private int poolCnt;
-    private int monsterCnt;
+    public int monsterCnt;
 
     public float chanceToCreateMonster = 0.01f;
 
