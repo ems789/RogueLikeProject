@@ -22,7 +22,8 @@ public class Projectile : MonoBehaviour
     {
         if (other.transform.tag == "Player")
         {
-            Player.instance.TakeDamage(damage);
+            Player player = other.GetComponent<Player>();
+            player.TakeDamage(damage);
             SetProject();
         }
         else if (other.transform.tag == "Wall")

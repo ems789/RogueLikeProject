@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public static Player instance;
-
     public int playerParts;
 
     public int hp, currentHP;
@@ -17,11 +15,6 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(instance == null)        
-            instance = this;
-        else if (instance != this)
-            Destroy(gameObject);
-
         currentHP = hp;
 
         for (int i = 0; i < transform.childCount; i++) 
