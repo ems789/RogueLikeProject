@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     private DungeonManager dungeonScript;
     private MonsterManager monsterScript;
+    public Text eventText;
 
     private void Awake()
     {
@@ -28,5 +30,15 @@ public class GameManager : MonoBehaviour
     {
         dungeonScript.SetupDungeon();
         monsterScript.MonsterSetting();
+    }
+
+    private IEnumerator ExitOpenText()
+    {
+        eventText.color = Color.red;
+        eventText.text = "보스존이 열렸습니다.";
+
+        eventText.enabled = true;
+        yield return new WaitForSeconds(4f);
+        eventText.enabled = false;
     }
 }
