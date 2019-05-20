@@ -186,7 +186,7 @@ public class Monster : MonoBehaviour
             {
                 GameManager.instance.StartCoroutine("ExitOpenText");
                 BoxCollider2D exitCol = GameObject.FindWithTag("Exit").GetComponent<BoxCollider2D>();
-                exitCol.enabled = true;     
+                exitCol.enabled = true;         
             }
         }
         Debug.Log(currentHP);
