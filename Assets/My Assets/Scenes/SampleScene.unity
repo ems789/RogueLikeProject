@@ -158,6 +158,7 @@ MonoBehaviour:
   monster:
   - {fileID: 7314361055351775446, guid: bb27052d665edb8468cc4e5ba1e7e080, type: 3}
   - {fileID: 2758549706675581433, guid: 628c4c6a057cdcb47a0e2dc66424522d, type: 3}
+  monsterCnt: 0
   chanceToCreateMonster: 0.045
 --- !u!1 &119245891
 GameObject:
@@ -721,6 +722,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MyHero
       objectReference: {fileID: 0}
+    - target: {fileID: 1974200289657678, guid: adc07983ea61e4343984de9c98808d85, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 515260828, guid: adc07983ea61e4343984de9c98808d85, type: 3}
       propertyPath: m_TagString
       value: Untagged
@@ -777,6 +782,10 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 1462861595, guid: adc07983ea61e4343984de9c98808d85, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4258411127929924, guid: adc07983ea61e4343984de9c98808d85, type: 3}
       propertyPath: m_LocalPosition.z
       value: 1
@@ -797,6 +806,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1801859483593484, guid: adc07983ea61e4343984de9c98808d85, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1637171435739092, guid: adc07983ea61e4343984de9c98808d85, type: 3}
       propertyPath: m_TagString
       value: Player
@@ -812,6 +825,10 @@ PrefabInstance:
     - target: {fileID: 1789884874072236, guid: adc07983ea61e4343984de9c98808d85, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1789884874072236, guid: adc07983ea61e4343984de9c98808d85, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212728928026969942, guid: adc07983ea61e4343984de9c98808d85,
         type: 3}

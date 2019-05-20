@@ -29,7 +29,7 @@ public class DungeonManager : MonoBehaviour
     public void SetupDungeon()
     {       
         boardHolder = new GameObject("Board").transform;
-        playerTrans = GameObject.FindWithTag("Player").transform;
+        playerTrans = GameObject.FindObjectOfType<Player>().transform;
         MapBorderFill();
 
         do
