@@ -62,7 +62,7 @@ public class Monster : MonoBehaviour
         if (PlayerInScope())
         {
             gameObject.SetActive(false);
-            //MonsterManager.instance.monsterCnt -= 1; ///////////bug
+            MonsterManager.instance.monsterCnt--;
         }
 
         // 나중에 몬스터별로 초기화로 변경
