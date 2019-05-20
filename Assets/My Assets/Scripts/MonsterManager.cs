@@ -21,7 +21,7 @@ public class MonsterManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance = null)
+        if (instance == null)
             instance = this;
         else if (instance != null)
             Destroy(gameObject);
@@ -49,6 +49,7 @@ public class MonsterManager : MonoBehaviour
                 {
                     if(Random.Range(0f, 1f) < chanceToCreateMonster)
                     {
+                        monsterCnt++;
                         float chance = Random.Range(0f, 1f);
 
                         if (chance >= 0 && chance <= 0.3f)
@@ -57,7 +58,7 @@ public class MonsterManager : MonoBehaviour
                             monsterType = Monster.MonsterType.MELEE;
 
                         monsterPool[(int)monsterType].GetObject(x, y);
-                        monsterCnt++;
+
                     }
                 }
             }
