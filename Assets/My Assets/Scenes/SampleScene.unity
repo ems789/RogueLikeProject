@@ -793,9 +793,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floorTiles:
-  - {fileID: 1751422242376819414, guid: cd81870d890ab3944b8511287e85f9f9, type: 3}
+  - {fileID: 2524283527644679988, guid: 324820ad0c5ef4d4bab60801b577230e, type: 3}
   wallTiles:
-  - {fileID: 7046749501532322852, guid: dceae4f356f4d3d4c947a13537e8ad26, type: 3}
+  - {fileID: 3942961223124730334, guid: b6ccda14bd5d2c941bbb3d92068f1e0a, type: 3}
   chest:
   - {fileID: 8372872945510370852, guid: b9f657662d822e6498165ab9d853708d, type: 3}
   exit: {fileID: 8776953271083133756, guid: 0f2e8fb2ea9d4f54e8304465f290a886, type: 3}
