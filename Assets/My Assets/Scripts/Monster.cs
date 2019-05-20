@@ -182,10 +182,11 @@ public class Monster : MonoBehaviour
             gameObject.SetActive(false);
             MonsterManager.instance.monsterCnt--;
 
-            if(MonsterManager.instance.monsterCnt <= 5)
+            if(MonsterManager.instance.monsterCnt <= 5) // 출구가 열리는 조건
             {
-                Collider exitCol = GameObject.FindWithTag("Exit").GetComponent<Collider>();
-                exitCol.isTrigger = true;                
+                Debug.Log("던전이 열렸습니다");
+                BoxCollider2D exitCol = GameObject.FindWithTag("Exit").GetComponent<BoxCollider2D>();
+                exitCol.enabled = true;     
             }
         }
         Debug.Log(currentHP);

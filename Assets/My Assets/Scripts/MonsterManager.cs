@@ -49,16 +49,19 @@ public class MonsterManager : MonoBehaviour
                 {
                     if(Random.Range(0f, 1f) < chanceToCreateMonster)
                     {
-                        monsterCnt++;
-                        float chance = Random.Range(0f, 1f);
+                        if (monsterCnt <= 5)
+                        {
+                            monsterCnt++;
 
-                        if (chance >= 0 && chance <= 0.3f)
-                            monsterType = Monster.MonsterType.RANGER;
-                        else if (chance > 0.3 && chance < 1.0f)
-                            monsterType = Monster.MonsterType.MELEE;
+                            float chance = Random.Range(0f, 1f);
 
-                        monsterPool[(int)monsterType].GetObject(x, y);
+                            if (chance >= 0 && chance <= 0.3f)
+                                monsterType = Monster.MonsterType.RANGER;
+                            else if (chance > 0.3 && chance < 1.0f)
+                                monsterType = Monster.MonsterType.MELEE;
 
+                            monsterPool[(int)monsterType].GetObject(x, y);
+                        }
                     }
                 }
             }
