@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        DontDestroyOnLoad(gameObject);
+
         currentHP = hp;
 
         for (int i = 0; i < transform.childCount; i++) 
