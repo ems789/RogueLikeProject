@@ -49,7 +49,7 @@ public class MonsterManager : MonoBehaviour
                 {
                     if(Random.Range(0f, 1f) < chanceToCreateMonster)
                     {
-                        if (monsterCnt <= 5)
+                        if (monsterCnt <= 5) // 테스트용 몬스터 제한
                         {
                             monsterCnt++;
 
