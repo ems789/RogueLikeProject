@@ -5,14 +5,18 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public List<GameObject> list = new List<GameObject>();
+    private Transform parent;
 
     public void InitPool(GameObject _obj, int poolSize)
-    {   
+    {
+        parent = new GameObject(_obj.name).transform;
+
         for (int i=0; i<poolSize; i++)
         {
             GameObject obj = Instantiate(_obj);
             obj.name += i;            
             obj.SetActive(false);
+            obj.transform.SetParent(parent);
 
             list.Add(obj);
         }
