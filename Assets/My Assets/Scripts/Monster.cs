@@ -73,7 +73,6 @@ public class Monster : MonoBehaviour
             projectileLiveTime = 0.8f;
             shotSpeed = 100f; // *임시* 몬스터 별로 다를 수 있음
             attackRange = 1.4f;
-            Debug.Log(gameObject.transform.localScale.x);
             attackCoolTime = 0.8f;
         }
         else if(monsterType == MonsterType.RANGER)
