@@ -10,6 +10,7 @@ public class ObjectPool : MonoBehaviour
     public void InitPool(GameObject _obj, int poolSize)
     {
         parent = new GameObject(_obj.name).transform;
+        DontDestroyOnLoad(parent);
 
         for (int i=0; i<poolSize; i++)
         {

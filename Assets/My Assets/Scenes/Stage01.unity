@@ -1134,7 +1134,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1991473237}
   - component: {fileID: 1991473238}
-  - component: {fileID: 1991473239}
   m_Layer: 0
   m_Name: ProjectPool
   m_TagString: Untagged
@@ -1171,18 +1170,6 @@ MonoBehaviour:
   Projectile:
   - {fileID: 2752624271666963105, guid: 64ec2695ecd4fc347b296a8914a9fe73, type: 3}
   - {fileID: 3943608907208567714, guid: e6e7911aeb3f0b944a2f42f183d5024c, type: 3}
---- !u!114 &1991473239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1991473236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a179ce6fc0a7fb419b5d5873f86c12d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8652742290803672428
 PrefabInstance:
   m_ObjectHideFlags: 0
