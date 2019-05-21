@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     private DungeonManager dungeonScript;
     private MonsterManager monsterScript;
     public Text eventText;
-
+    
     int sceneNum;
 
     private void Awake()

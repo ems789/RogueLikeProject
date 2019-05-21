@@ -14,7 +14,9 @@ public class Monster : MonoBehaviour
 
     // 타입 관련
     public MonsterType monsterType;
+
     public bool isBoss = false;
+    public bool openStage = false;
 
     private Animator animator;
     private Transform targetTrans;
@@ -182,11 +184,11 @@ public class Monster : MonoBehaviour
             gameObject.SetActive(false);
             MonsterManager.instance.monsterCnt--;
 
-            if(MonsterManager.instance.monsterCnt <= 5) // 출구가 열리는 조건
+            if(MonsterManager.instance.monsterCnt == 5) // 출구가 열리는 조건
             {
                 GameManager.instance.StartCoroutine("ExitOpenText");
                 BoxCollider2D exitCol = GameObject.FindWithTag("Exit").GetComponent<BoxCollider2D>();
-                exitCol.enabled = true;         
+                exitCol.enabled = true;
             }
         }
         Debug.Log(currentHP);
