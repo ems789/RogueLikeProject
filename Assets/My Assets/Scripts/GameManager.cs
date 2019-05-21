@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     private IEnumerator ExitOpenText()
     {
         eventText.color = Color.red;
-        eventText.text = "보스존이 열렸습니다.";
+        eventText.text = "보스 스테이지가 열렸습니다.";
 
         eventText.enabled = true;
         yield return new WaitForSeconds(4f);
