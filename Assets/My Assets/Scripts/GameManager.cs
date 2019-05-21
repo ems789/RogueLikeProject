@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
     private DungeonManager dungeonScript;
     private MonsterManager monsterScript;
     public Text eventText;
+
+    int sceneNum;
 
     private void Awake()
     {
@@ -40,5 +43,11 @@ public class GameManager : MonoBehaviour
         eventText.enabled = true;
         yield return new WaitForSeconds(4f);
         eventText.enabled = false;
+    }
+
+    public void SceneMove()
+    {
+        sceneNum = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(++sceneNum);
     }
 }

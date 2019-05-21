@@ -919,6 +919,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StairsUpNight
       objectReference: {fileID: 0}
+    - target: {fileID: 4094816849631417471, guid: 3ee19c36b5ebc914f8a565c20cef22df,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 64122558765649281, guid: 3ee19c36b5ebc914f8a565c20cef22df,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4632,6 +4637,24 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1868466648}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2072270883 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4094816849631417471, guid: 3ee19c36b5ebc914f8a565c20cef22df,
+    type: 3}
+  m_PrefabInstance: {fileID: 1364227409}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2072270884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072270883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7efaecae11bb0142aebde63e7c1f5a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2098434181
 GameObject:
   m_ObjectHideFlags: 0
