@@ -34,6 +34,10 @@ public class DungeonManager : MonoBehaviour
 
         do
         {
+            // 던전 재생성시 MAX 위치를 초기화
+            xTileMax = 15;
+            yTileMax = 15;
+
             InitializeMap();
             tileCount = 0;
 
@@ -41,6 +45,7 @@ public class DungeonManager : MonoBehaviour
             MoveOverlappedPlayer();
 
             TileCheck((int)playerTrans.position.x, (int)playerTrans.position.y);
+            Debug.Log("던전생성");
         } while (tileCount <= minimumTile);
         
         drawMapTiles(cellmap);        
