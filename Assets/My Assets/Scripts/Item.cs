@@ -15,31 +15,20 @@ public class Item
     public int atk;
     public int def;
     public int maxHp;
+    public ItemType itemType;
 
-    public Sprite Image;
+    public Sprite image;
     
 
-    public Item(string _name, int _heal, int _atk=0, int _def=0, int _maxHp=0, Sprite _Image)
+    public Item(Sprite _image, string _name, int _heal, int _atk=0, int _def=0, int _maxHp=0)
     {
+        image = _image;
         name = _name;
         heal = _heal;
         atk = _atk;
         def = _def;
         maxHp = _maxHp;
-        Image = _Image;
-
+        
     }
     
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
