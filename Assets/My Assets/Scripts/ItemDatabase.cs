@@ -31,4 +31,12 @@ public class ItemDatabase : MonoBehaviour
     {
         items.Add(new Item(Resources.Load<SpriteAtlas>("Item/ItemAtlas").GetSprite(_spriteName), _name, _heal, _itemType ,_atk, _def, _maxHp));
     }
+
+    public Item RandomItem()
+    {
+        Item temp;
+
+        temp = items[Random.Range(0, items.Count)];
+        return temp;
+    }
 }

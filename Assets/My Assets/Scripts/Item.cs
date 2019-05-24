@@ -9,9 +9,9 @@ public enum ItemType
 }
 
 [System.Serializable]
-public class Item : MonoBehaviour
+public class Item
 {
-    public string _itemName;
+    public string itemName;
     public int heal;
     public int atk;
     public int def;
@@ -20,10 +20,10 @@ public class Item : MonoBehaviour
     
     public Sprite image;
 
-    public Item(Sprite _image, string __itemName, int _heal, ItemType _itemType, int _atk=0, int _def=0, int _maxHp=0)
+    public Item(Sprite _image, string _itemName, int _heal, ItemType _itemType, int _atk=0, int _def=0, int _maxHp=0)
     {
         image = _image;
-        _itemName = __itemName;
+        itemName = _itemName;
         heal = _heal;
         itemType = _itemType;
         atk = _atk;
