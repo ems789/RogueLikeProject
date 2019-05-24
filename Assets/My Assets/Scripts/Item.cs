@@ -8,6 +8,7 @@ public enum ItemType
     Consumption,
 }
 
+[System.Serializable]
 public class Item
 {
     public string name;
@@ -20,11 +21,12 @@ public class Item
     public Sprite image;
     
 
-    public Item(Sprite _image, string _name, int _heal, int _atk=0, int _def=0, int _maxHp=0)
+    public Item(Sprite _image, string _name, int _heal, ItemType _itemType, int _atk=0, int _def=0, int _maxHp=0)
     {
         image = _image;
         name = _name;
         heal = _heal;
+        itemType = _itemType;
         atk = _atk;
         def = _def;
         maxHp = _maxHp;
