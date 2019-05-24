@@ -27,7 +27,7 @@ public class DungeonManager : MonoBehaviour
     private double minimumTile = width * height / 2.5; // 최소한 깔려야 하는 타일의 수
 
     public void SetupDungeon()
-    {       
+    {          
         boardHolder = new GameObject("Board").transform;
         playerTrans = GameObject.FindObjectOfType<Player>().transform;
         MapBorderFill();
