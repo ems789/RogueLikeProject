@@ -28,8 +28,6 @@ public class Item
         itemType = _itemType;
         atk = _atk;
         def = _def;
-        maxHp = _maxHp;
-        
-    }
-    
+        maxHp = _maxHp;        
+    }   
 }
