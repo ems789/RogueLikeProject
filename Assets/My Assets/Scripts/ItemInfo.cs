@@ -5,6 +5,12 @@ using UnityEngine;
 public class ItemInfo : MonoBehaviour
 {
     Item item;
+    Equipment equip;
+
+    private void Start()
+    {
+        equip = FindObjectOfType<Equipment>();
+    }
 
     public void Init(Item temp)
     {
@@ -15,7 +21,6 @@ public class ItemInfo : MonoBehaviour
         gameObject.AddComponent<SpriteRenderer>().sprite = item.image;
         gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Item";
         gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
-        gameObject.tag = "Weapon";
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -24,7 +29,7 @@ public class ItemInfo : MonoBehaviour
         {
             if (item.itemType == ItemType.Equipment)
             {
-                Debug.Log("장착");
+                equip.EquipItem(item);
             }
             else if (item.itemType == ItemType.Consumption)
             {
