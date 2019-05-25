@@ -56,11 +56,11 @@ TagManager:
   - name: Chest
     uniqueID: 3779559981
     locked: 0
-  - name: Item
-    uniqueID: 4059170801
-    locked: 0
   - name: Maker
     uniqueID: 2125798565
+    locked: 0
+  - name: Item
+    uniqueID: 4059170801
     locked: 0
   - name: Player
     uniqueID: 1715631315
