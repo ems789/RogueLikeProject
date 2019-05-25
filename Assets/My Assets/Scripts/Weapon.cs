@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour
     public Animator attackEffect;
     private Animator temp;
 
-    public int weaponDamage;
+    private int atk;
     private bool isAttack = false;
     private int enemyHP;
 
@@ -16,7 +16,8 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        weaponDamage = GetComponentInParent<Player>().atk + weaponDamage;   
+        atk = GetComponentInParent<Player>().atk;
+        Debug.Log(atk);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -29,7 +30,7 @@ public class Weapon : MonoBehaviour
                 temp = Instantiate(attackEffect, other.transform.position, Quaternion.identity);
                 temp.SetFloat("Type", 3.0f);
                 temp.SetTrigger("Trigger");
-                other.gameObject.GetComponent<Monster>().TakeDamage(weaponDamage);
+                other.gameObject.GetComponent<Monster>().TakeDamage(atk);
 
             }
         }

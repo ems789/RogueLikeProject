@@ -9,12 +9,12 @@ public class Player : MonoBehaviour
     public int hp, currentHP;
     public int mp, currentMP;
 
-    public int atk;
+    public int atk = 5; // 기본 공격력
     public int def;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        atk = 5;
         DontDestroyOnLoad(gameObject);
 
         currentHP = hp;
