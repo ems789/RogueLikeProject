@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public int hp, currentHP;
     public int mp, currentMP;
 
-    public int attackDamage;
+    public int atk;
     public int def;
 
     // Start is called before the first frame update

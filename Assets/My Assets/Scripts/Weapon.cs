@@ -16,7 +16,7 @@ public class Weapon : MonoBehaviour
 
     private void Start()
     {
-        weaponDamage = GetComponentInParent<Player>().attackDamage + weaponDamage;   
+        weaponDamage = GetComponentInParent<Player>().atk + weaponDamage;   
     }
 
     private void OnCollisionEnter2D(Collision2D other)
