@@ -7,7 +7,7 @@ public class ItemDatabase : MonoBehaviour
 {
     public static ItemDatabase instance;
     public List<Item> items = new List<Item>();
-    GameObject item;
+    GameObject newGameObj;
 
     private void Awake()
     {
@@ -20,7 +20,6 @@ public class ItemDatabase : MonoBehaviour
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-        item = new GameObject("temp");
             
         Add("SetBWeaponBlade3", "동검", 0, ItemType.Equipment, 2);
         Add("SetCWeaponBlade4", "금검", 0, ItemType.Equipment, 3);
@@ -35,12 +34,13 @@ public class ItemDatabase : MonoBehaviour
 
     public void RandomItem(Transform tr)
     {
-        Item temp;
+        newGameObj = new GameObject("randomItem"); // 생성할 아이템이 할당될 오브젝트 생성
 
-        temp = items[Random.Range(0, items.Count)];
+        Item randomItem;
+        randomItem = items[Random.Range(0, items.Count)];
 
-        // 새로 생성한 new 게임 오브젝트에 아이템 정보를 복사
-        item.AddComponent<ItemInfo>().Init(temp);
-        item.transform.position = tr.position;
+        // 새로 생성한 게임 오브젝트에 아이템 정보를 복사
+        newGameObj.AddComponent<ItemInfo>().Init(randomItem);
+        newGameObj.transform.position = tr.position;
     }
 }
