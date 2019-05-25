@@ -15,5 +15,21 @@ public class ItemInfo : MonoBehaviour
         gameObject.AddComponent<SpriteRenderer>().sprite = item.image;
         gameObject.GetComponent<SpriteRenderer>().sortingLayerName = "Item";
         gameObject.AddComponent<BoxCollider2D>().isTrigger = true;
+        gameObject.tag = "Weapon";
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Input.GetKeyDown(","))
+        {
+            if (item.itemType == ItemType.Equipment)
+            {
+                Debug.Log("장착");
+            }
+            else if (item.itemType == ItemType.Consumption)
+            {
+                Debug.Log("소비");
+            }
+        }
     }
 }
