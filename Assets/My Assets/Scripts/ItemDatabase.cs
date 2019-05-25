@@ -40,11 +40,7 @@ public class ItemDatabase : MonoBehaviour
         temp = items[Random.Range(0, items.Count)];
 
         // 새로 생성한 new 게임 오브젝트에 아이템 정보를 복사
-        item.name = temp.itemName;
-        item.transform.localScale = new Vector3(0.7f, 0.7f, 0.7f);
-        item.AddComponent<SpriteRenderer>().sprite = temp.image;
-        item.GetComponent<SpriteRenderer>().sortingLayerName = "Item";
-        item.AddComponent<BoxCollider2D>().isTrigger = true;
+        item.AddComponent<ItemInfo>().Init(temp);
         item.transform.position = tr.position;
     }
 }
