@@ -36,54 +36,44 @@ public class Equipment : MonoBehaviour
     public Item EquipItem(Item item)
     {
         if (item.image.name.Contains("Weapon"))
-        {
-            slot = transform.GetChild((int)EquipmentKind.Weapon).GetChild(0).GetComponent<Image>();
-            // 들고 있는 아이템이 없는 경우
-            if (equip[(int)EquipmentKind.Weapon].image == null)
-            {
-                equip[(int)EquipmentKind.Weapon] = item;
-                // 캐릭터가 들고 있는 무기 이미지를 교체
-                player.transform.Find("WeaponPosition(Front) (2)").GetComponent<SpriteRenderer>().sprite = item.image;
-            }
-            else
-            {
-                if (!isEquip)
-                {
-                    temp = equip[(int)EquipmentKind.Weapon];
-                    equip[(int)EquipmentKind.Weapon] = item;
-                    player.transform.Find("WeaponPosition(Front) (2)").GetComponent<SpriteRenderer>().sprite = item.image;
-                }
-            }
-            isEquip = true;
-            StartCoroutine("TurnOffEquip");
-
-        }
+            equipIdx = (int)EquipmentKind.Weapon;
 
         if (item.image.name.Contains("Helmet"))
-        {
-            slot = transform.GetChild((int)EquipmentKind.Helmet).GetChild(0).GetComponent<Image>();
-            equip[(int)EquipmentKind.Helmet] = item;
-        }
+            equipIdx = (int)EquipmentKind.Helmet;
 
         if (item.image.name.Contains("Armor"))
-        {
-            slot = transform.GetChild((int)EquipmentKind.Armor).GetChild(0).GetComponent<Image>();
-            equip[(int)EquipmentKind.Armor] = item;
-        }
-
+            equipIdx = (int)EquipmentKind.Armor;
 
         if (item.image.name.Contains("Gloves"))
-        {
-            slot = transform.GetChild((int)EquipmentKind.Gloves).GetChild(0).GetComponent<Image>();
-            equip[(int)EquipmentKind.Gloves] = item;
-        }
+            equipIdx = (int)EquipmentKind.Gloves;
 
         if (item.image.name.Contains("Boots"))
-        {
-            slot = transform.GetChild((int)EquipmentKind.Boots).GetChild(0).GetComponent<Image>();
-            equip[(int)EquipmentKind.Boots] = item;
-        }
+            equipIdx = (int)EquipmentKind.Boots;
 
+        slot = transform.GetChild(equipIdx).GetChild(0).GetComponent<Image>();
+
+        // 장비창에 교체할 아이템 삽입
+        if (equip[equipIdx].image == null)
+        {
+            equip[equipIdx] = item;
+            // 캐릭터가 들고 있는 무기 이미지를 교체
+            if(equipIdx == (int)EquipmentKind.Weapon)
+                player.transform.Find("WeaponPosition(Front) (2)").GetComponent<SpriteRenderer>().sprite = item.image;
+        }
+        else
+        {
+            if (!isEquip)
+            {
+                temp = equip[(int)EquipmentKind.Weapon];
+                equip[(int)EquipmentKind.Weapon] = item;
+                if (equipIdx == (int)EquipmentKind.Weapon)
+                    player.transform.Find("WeaponPosition(Front) (2)").GetComponent<SpriteRenderer>().sprite = item.image;
+            }
+        }
+        isEquip = true;
+        StartCoroutine("TurnOffEquip");
+
+        // 장비창 슬릇에 이미지 삽입
         slot.sprite = item.image;
         slot.enabled = true;
         return temp;
