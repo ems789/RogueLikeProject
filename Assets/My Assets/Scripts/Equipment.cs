@@ -53,29 +53,33 @@ public class Equipment : MonoBehaviour
         slot = transform.GetChild(equipIdx).GetChild(0).GetComponent<Image>();
 
         // 장비창에 교체할 아이템 삽입
-        if (equip[equipIdx].image == null)
+        if (equip[equipIdx].image == null) // 장비창이 비어있으면
         {
-            equip[equipIdx] = item;
+            Debug.Log("장착1");
+            equip[equipIdx] = item;                
             // 캐릭터가 들고 있는 무기 이미지를 교체
             if(equipIdx == (int)EquipmentKind.Weapon)
                 player.transform.Find("WeaponPosition(Front) (2)").GetComponent<SpriteRenderer>().sprite = item.image;
+            // 장비 슬릇 교체
+            slot.sprite = item.image;
+            slot.enabled = true;
         }
-        else
+        else // 장비창에 착용중인 아이템이 있으면
         {
-            if (!isEquip)
+            if (!isEquip) // 중복 호출 방지
             {
-                temp = equip[(int)EquipmentKind.Weapon];
+                Debug.Log("장착2");
+                temp = equip[equipIdx];
                 equip[(int)EquipmentKind.Weapon] = item;
                 if (equipIdx == (int)EquipmentKind.Weapon)
                     player.transform.Find("WeaponPosition(Front) (2)").GetComponent<SpriteRenderer>().sprite = item.image;
-            }
+                slot.sprite = item.image;
+                slot.enabled = true;
+            }            
         }
         isEquip = true;
         StartCoroutine("TurnOffEquip");
 
-        // 장비창 슬릇에 이미지 삽입
-        slot.sprite = item.image;
-        slot.enabled = true;
-        return temp;
+        return temp; // 착용중인 아이템 반환
     }
 }
