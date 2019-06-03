@@ -56,11 +56,17 @@ public class Equipment : MonoBehaviour
 
             slot = transform.GetChild(equipIdx).GetChild(0).GetComponent<Image>();
 
-            // 장착한 아이템이 있으면
+            // 착용한 장비 해제
             if (equip[equipIdx].image != null)
             {
                 temp = equip[equipIdx];
                 equip[(int)EquipmentKind.Weapon] = item;
+
+                Player.instance.atk -= temp.atk;
+                Player.instance.def -= temp.def;
+                Player.instance.hp -= temp.hp;
+                if (Player.instance.currentHP > Player.instance.hp)
+                    Player.instance.currentHP = Player.instance.hp;
             }
             // 장비 장착
             equip[equipIdx] = item;
@@ -71,6 +77,10 @@ public class Equipment : MonoBehaviour
             // 장비 슬릇 교체
             slot.sprite = item.image;
             slot.enabled = true;
+
+            Player.instance.atk += item.atk;
+            Player.instance.def += item.def;
+            Player.instance.hp += item.hp;
         }   
         isEquip = true;
         StartCoroutine("TurnOffEquip");
