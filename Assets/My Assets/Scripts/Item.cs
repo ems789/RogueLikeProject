@@ -15,12 +15,12 @@ public class Item
     public int heal;
     public int atk;
     public int def;
-    public int maxHp;
+    public int hp;
     public ItemType itemType;
     
     public Sprite image;
 
-    public Item(Sprite _image, string _itemName, int _heal, ItemType _itemType, int _atk=0, int _def=0, int _maxHp=0)
+    public Item(Sprite _image, string _itemName, int _heal, ItemType _itemType, int _atk=0, int _def=0, int _hp=0)
     {
         image = _image;
         itemName = _itemName;
@@ -28,6 +28,6 @@ public class Item
         itemType = _itemType;
         atk = _atk;
         def = _def;
-        maxHp = _maxHp;        
+        hp = _hp;        
     }   
 }
