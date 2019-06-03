@@ -10,9 +10,6 @@ public class Weapon : MonoBehaviour
     private bool isAttack = false;
     private int enemyHP;
 
-    //test
-    Vector2 lookDirection = new Vector2(0, 0);
-
     private void OnCollisionEnter2D(Collision2D other)
     {
         isAttack = GetComponentInParent<PlayerController>().getIsAttack();
