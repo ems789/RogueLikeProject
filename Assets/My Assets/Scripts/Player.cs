@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public static Player instance = null;
+    
     public int playerParts;
 
     public int hp, currentHP;
@@ -14,6 +16,11 @@ public class Player : MonoBehaviour
 
     void Awake()
     {
+        if (instance == null)
+            instance = this;
+        else if (instance != null)
+            Destroy(gameObject);
+
         atk = 5;
         DontDestroyOnLoad(gameObject);
 
