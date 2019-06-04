@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Equipment : MonoBehaviour
 {
-    enum EquipmentKind
+    public enum EquipmentKind
     {
         Weapon,
         Helmet,
@@ -20,7 +20,7 @@ public class Equipment : MonoBehaviour
     int equipIdx = 0;
     bool isEquip = false;
     Item temp;
-    Image slot;
+    public Image slot;
 
     private void Start()
     {
