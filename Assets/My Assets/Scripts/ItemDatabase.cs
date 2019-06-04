@@ -21,7 +21,7 @@ public class ItemDatabase : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
             
-        Add("SetBWeaponBlade3", "동검", 0, ItemType.Equipment, 2);
+        Add("SetBWeaponBlade3", "목검", 0, ItemType.Equipment, 2);
         Add("SetCWeaponBlade4", "금검", 0, ItemType.Equipment, 3);
         Add("SetJWeaponBlade4", "철검", 0, ItemType.Equipment, 4);
         Add("SetLWeaponBlade4", "강철검", 0, ItemType.Equipment, 5);
