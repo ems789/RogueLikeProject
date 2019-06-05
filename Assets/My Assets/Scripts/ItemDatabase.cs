@@ -22,9 +22,10 @@ public class ItemDatabase : MonoBehaviour
         DontDestroyOnLoad(gameObject);
             
         Add("SetBWeaponBlade3", "목검", 0, ItemType.Equipment, 2);
-        Add("SetCWeaponBlade4", "금검", 0, ItemType.Equipment, 3);
+        Add("SetDWeaponBlade3", "동검", 0, ItemType.Equipment, 3);
         Add("SetJWeaponBlade4", "철검", 0, ItemType.Equipment, 4);
         Add("SetLWeaponBlade4", "강철검", 0, ItemType.Equipment, 5);
+        Add("SetCWeaponBlade4", "황금검", 0, ItemType.Equipment, 6);
     }
 
     void Add(string _spriteName, string _name, int _heal,ItemType _itemType, int _atk = 0, int _def = 0, int _maxHp = 0)
