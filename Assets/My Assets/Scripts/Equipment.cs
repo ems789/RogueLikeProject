@@ -35,27 +35,12 @@ public class Equipment : MonoBehaviour
 
     public Item EquipItem(Item item)
     {
-
         if (!isEquip) // 중복 호출 방지
         {
-            if (item.image.name.Contains("Weapon"))
-            equipIdx = (int)EquipmentKind.Weapon;
-
-            if (item.image.name.Contains("Helmet"))
-                equipIdx = (int)EquipmentKind.Helmet;
-
-            if (item.image.name.Contains("Armor"))
-                equipIdx = (int)EquipmentKind.Armor;
-
-            if (item.image.name.Contains("Gloves"))
-                equipIdx = (int)EquipmentKind.Gloves;
-
-            if (item.image.name.Contains("Boots"))
-                equipIdx = (int)EquipmentKind.Boots;
-
+            equipIdx = TypeCheck(item);
 
             slot = transform.GetChild(equipIdx).GetChild(0).GetComponent<Image>();
-
+            
             // 착용한 장비 해제
             if (equip[equipIdx].image != null)
             {
@@ -86,5 +71,45 @@ public class Equipment : MonoBehaviour
         StartCoroutine("TurnOffEquip");
 
         return temp; // 착용중인 아이템 반환
+    }
+
+    public Vector3 SlotTrans()
+    {
+        return transform.GetChild(equipIdx).GetChild(0).transform.position;
+    }
+
+    // 떨어져 있는 아이템의 종류에 맞는 장비 반환
+    public Item SameTypeReturn(Item item)
+    {
+        equipIdx = TypeCheck(item);
+
+        if (equip[equipIdx].image != null)
+        {
+            temp = equip[equipIdx];
+        }
+        return temp;
+    }
+
+    // 장비 종류 검사
+    public int TypeCheck(Item item)
+    {
+        int temp = 0;
+
+        if (item.image.name.Contains("Weapon"))
+            temp = (int)EquipmentKind.Weapon;
+
+        else if (item.image.name.Contains("Helmet"))
+            temp = (int)EquipmentKind.Helmet;
+
+        else if (item.image.name.Contains("Armor"))
+            temp = (int)EquipmentKind.Armor;
+
+        else if (item.image.name.Contains("Gloves"))
+            temp = (int)EquipmentKind.Gloves;
+
+        else if (item.image.name.Contains("Boots"))
+            temp = (int)EquipmentKind.Boots;
+
+        return temp;
     }
 }
