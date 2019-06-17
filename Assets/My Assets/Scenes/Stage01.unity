@@ -373,7 +373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropTooltip: {fileID: 375956737}
   equipTooltip: {fileID: 571299993}
-  equip: {fileID: 0}
 --- !u!1 &119245891
 GameObject:
   m_ObjectHideFlags: 0
