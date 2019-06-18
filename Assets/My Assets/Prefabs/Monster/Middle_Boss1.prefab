@@ -42,7 +42,7 @@ RectTransform:
   m_GameObject: {fileID: 7314361055351775446}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 15, y: 15, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 6740526672450953533}
   m_Father: {fileID: 0}
@@ -88,9 +88,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1715631315
-  m_SortingLayer: 5
+  m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 78d7c10fea909ff48949755759d52e9b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7d4bc25695e87c4eb9a3191a388c616, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterType: 0
   isBoss: 1
+  openStage: 0
   hp: 30
   attackDamage: 25
   moveSpeed: 2
@@ -130,7 +131,7 @@ Animator:
   m_GameObject: {fileID: 7314361055351775446}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d2336a9a41caf30419b855632bb45842, type: 2}
+  m_Controller: {fileID: 9100000, guid: d900b2c50e85bad469cc6930d52b888a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -198,26 +199,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerMaker 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7863744933644887972, guid: 213f834bd8aacc04ebe71519d7bdcc60,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -282,6 +263,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 213f834bd8aacc04ebe71519d7bdcc60, type: 3}
