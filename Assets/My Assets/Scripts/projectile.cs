@@ -29,7 +29,7 @@ public class Projectile : MonoBehaviour
         else if (other.transform.tag == "Wall")
         {
             SetProject();
-        }               
+        }
     }
 
     private void SetProject()
