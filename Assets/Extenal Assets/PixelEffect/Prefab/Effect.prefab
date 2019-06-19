@@ -71,7 +71,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 8bf65d8052c9c1b4f909676c5404b041, type: 2}
+      objectReference: {fileID: 9100000, guid: 5be9e7c39e5eb4d4285ddc1642c5f047, type: 2}
     - target: {fileID: 3333710240465500198, guid: 4824617dabf07c545ad1fb7701473db7,
         type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: 3333710240465500198, guid: 4824617dabf07c545ad1fb7701473db7,
         type: 3}
       propertyPath: m_Size.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3333710240465500198, guid: 4824617dabf07c545ad1fb7701473db7,
         type: 3}
