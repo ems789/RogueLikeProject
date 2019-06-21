@@ -45,7 +45,6 @@ public class DungeonManager : MonoBehaviour
             MoveOverlappedPlayer();
 
             TileCheck((int)playerTrans.position.x, (int)playerTrans.position.y);
-            Debug.Log("던전생성");
         } while (tileCount <= minimumTile);
         
         drawMapTiles(cellmap);        
