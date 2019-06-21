@@ -83,7 +83,7 @@ public class Monster : MonoBehaviour
         {
             projectileLiveTime = 2f;
             shotSpeed = 150f;
-            attackRange = 3.0f;
+            attackRange = 3.5f;
             attackCoolTime = 1.0f;
         }
         else if (monsterType == MonsterType.DASH)
