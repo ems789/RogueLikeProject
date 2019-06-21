@@ -117,11 +117,14 @@ MonoBehaviour:
   monsterType: 0
   isBoss: 1
   openStage: 0
-  hp: 30
-  attackDamage: 25
+  pattern: {fileID: 0}
+  hp: 120
+  attackDamage: 18
   moveSpeed: 2
   delayInAdvance: 0.2
   delayLator: 0.3
+  isAttack: 0
+  isPattern: 0
 --- !u!95 &7314361055351775445
 Animator:
   serializedVersion: 3
@@ -203,7 +206,8 @@ MonoBehaviour:
   patternList:
   - {fileID: 6565654808836631483, guid: 8169655bc2d0d884eb456b26e1fd6507, type: 3}
   - {fileID: 3333710240462049016, guid: 4824617dabf07c545ad1fb7701473db7, type: 3}
-  - {fileID: 6504936035165805871, guid: 264012cf4481ff84fb89c15064544a87, type: 3}
+  - {fileID: 6207956359781779455, guid: f1e7d681967be5a488d43917e8f797aa, type: 3}
+  Me: {fileID: 7314361055351775447}
 --- !u!1001 &3506768168621328025
 PrefabInstance:
   m_ObjectHideFlags: 0
