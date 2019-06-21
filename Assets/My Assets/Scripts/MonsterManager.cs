@@ -17,7 +17,7 @@ public class MonsterManager : MonoBehaviour
     private Monster.MonsterType monsterType;
     
     private int maxPool = DungeonManager.width + DungeonManager.height;
-    private double meleePoolMax = 0, rangerPoolMax = 0;
+    private double poolMax = 0;
 
     private void Awake()
     {
@@ -30,13 +30,12 @@ public class MonsterManager : MonoBehaviour
         monsterPool = new ObjectPool[poolCnt];
         for(int i=0; i<poolCnt; i++)
             monsterPool[i] = new ObjectPool();
-        
-        
-        meleePoolMax = maxPool * 0.7f;
-        rangerPoolMax = maxPool * 0.3f;
+                
+        poolMax = 10;
 
-        monsterPool[0].InitPool(monster[0], (int)meleePoolMax);
-        monsterPool[1].InitPool(monster[1], (int)rangerPoolMax);
+        monsterPool[0].InitPool(monster[0], (int)poolMax);
+        monsterPool[1].InitPool(monster[1], (int)poolMax);
+        monsterPool[2].InitPool(monster[2], (int)poolMax);
     }
 
     public void MonsterSetting()
@@ -49,16 +48,18 @@ public class MonsterManager : MonoBehaviour
                 {
                     if(Random.Range(0f, 1f) < chanceToCreateMonster)
                     {
-                        if (monsterCnt < 10) // 테스트용 몬스터 제한
+                        if (monsterCnt < 12) // 몬스터 제한
                         {
                             monsterCnt++;
 
-                            float chance = Random.Range(0f, 1f);
+                            float chance = Random.Range(0, 3);
 
-                            if (chance >= 0 && chance <= 0.3f)
+                            if (chance == 0)
                                 monsterType = Monster.MonsterType.RANGER;
-                            else if (chance > 0.3 && chance < 1.0f)
+                            else if (chance == 1)
                                 monsterType = Monster.MonsterType.MELEE;
+                            else if (chance == 2)
+                                monsterType = Monster.MonsterType.DASH;
 
                             monsterPool[(int)monsterType].GetObject(x, y);
                         }
@@ -66,6 +67,5 @@ public class MonsterManager : MonoBehaviour
                 }
             }
         }
-        Debug.Log("몬스터 수 : " + monsterCnt);
     }
 }

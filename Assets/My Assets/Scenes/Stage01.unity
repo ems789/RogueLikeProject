@@ -357,6 +357,7 @@ MonoBehaviour:
   monster:
   - {fileID: 7314361055351775446, guid: bb27052d665edb8468cc4e5ba1e7e080, type: 3}
   - {fileID: 2758549706675581433, guid: 628c4c6a057cdcb47a0e2dc66424522d, type: 3}
+  - {fileID: 7314361055351775446, guid: 22280da4adc13c949b2c4e87b65c7a92, type: 3}
   monsterCnt: 0
   chanceToCreateMonster: 0.045
 --- !u!1 &93843667
