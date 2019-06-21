@@ -8,7 +8,7 @@ public class Monster : MonoBehaviour
     {
         MELEE,
         RANGER,
-        //DASH,
+        DASH,
         NumberOfTypes,
     }
 
@@ -18,9 +18,12 @@ public class Monster : MonoBehaviour
     public bool isBoss = false;
     public bool openStage = false;
 
+    public GameObject pattern;
     private Animator animator;
     private Transform targetTrans;
-    private Vector3 targetVec;
+    private Vector3 tempDir;
+    private Vector3 tempPos;
+    private Vector3 targetPos;
 
     private Vector3 lookDirection = new Vector3(0, 0, 0);
 
@@ -40,6 +43,7 @@ public class Monster : MonoBehaviour
 
     private bool isMove = false;
     private bool isPatrol = false;
+    private bool isAttack = false; // 현재 공격중인지
 
     private float projectileLiveTime;
     private float shotSpeed;
@@ -53,8 +57,8 @@ public class Monster : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         targetTrans = GameObject.FindWithTag("Player").transform;
-        targetVec = targetTrans.position;
-        distance = Vector3.Distance(targetVec, gameObject.transform.position);
+        targetPos = targetTrans.position;
+        distance = Vector3.Distance(targetPos, gameObject.transform.position);
 
         currentHP = hp;
         scope = 4.5f;
@@ -82,6 +86,12 @@ public class Monster : MonoBehaviour
             attackRange = 3.0f;
             attackCoolTime = 1.0f;
         }
+        else if (monsterType == MonsterType.DASH)
+        {
+            shotSpeed = 3f; // 대쉬 타입은 몬스터가 투사체
+            attackRange = 2.5f;
+            attackCoolTime = 1.2f;
+        }
 
         if (isBoss)
         {
@@ -92,13 +102,17 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
-        targetVec = targetTrans.position;
-        distance = Vector3.Distance(targetVec, gameObject.transform.position);
+
+        targetPos = targetTrans.position;
+        distance = Vector3.Distance(targetPos, gameObject.transform.position);
 
         if(PlayerInScope())
         {
             animator.SetBool("Walk", true);
-            Move();
+
+            // 공격하고 있을때는 이동 불가
+            if(!isAttack) 
+                Move();
 
             if (PlayerInAttackRange())
             {
@@ -108,9 +122,19 @@ public class Monster : MonoBehaviour
                 checkTime += Time.deltaTime;
                 if (checkTime >= attackCoolTime)
                 {
-                    Attack();
-                    checkTime = 0;
-                }
+                    if (monsterType == MonsterType.DASH && !isAttack)
+                    {
+                        DashPath();
+                        isAttack = true;
+                        StartCoroutine("Dash");
+                        checkTime = 0;
+                    }
+                    if (monsterType != MonsterType.DASH)
+                    {
+                        Attack();
+                        checkTime = 0;
+                    }
+                }                
                 return;
             }
             gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -129,8 +153,29 @@ public class Monster : MonoBehaviour
                 isPatrol = true;
                 patrolCoolTime = Random.Range(4.0f, 6.0f);
                 lookDirection.x = Random.Range(-1, 2);
-                lookDirection.y = Random.Range(-1, 2);
+                lookDirection.y = Random.Range(-1, 2);                
             }
+        }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {        
+        checkTime += Time.deltaTime;
+        while (checkTime >= 1.5) // 1초당 데미지
+        {
+            checkTime = 0;
+            if (collision.transform.tag == "Player")
+            {
+                Player.instance.TakeDamage((attackDamage));
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            Player.instance.TakeDamage(attackDamage);
         }
     }
 
@@ -146,7 +191,6 @@ public class Monster : MonoBehaviour
 
         transform.position += lookDirection * moveSpeed * Time.deltaTime;
 
-        //test
         movingTime = Random.Range(2.0f, 3.0f);
         checkTime += Time.deltaTime;
         if (checkTime >= movingTime)
@@ -161,13 +205,13 @@ public class Monster : MonoBehaviour
     {
         if (animator.GetBool("Walk"))
         {
-            if (targetVec.x < transform.position.x)
+            if (targetPos.x < transform.position.x)
                 lookDirection.x = -1;
-            else if (targetVec.x > transform.position.x)
+            else if (targetPos.x > transform.position.x)
                 lookDirection.x = 1;
-            if (targetVec.y < transform.position.y)
+            if (targetPos.y < transform.position.y)
                 lookDirection.y = -1;
-            else if (targetVec.y > transform.position.y)
+            else if (targetPos.y > transform.position.y)
                 lookDirection.y = 1;
 
             if (!PlayerInAttackRange())
@@ -178,12 +222,12 @@ public class Monster : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHP -= damage;
-        if(currentHP <= 0)
+        if (currentHP <= 0)
         {
             gameObject.SetActive(false);
             MonsterManager.instance.monsterCnt--;
 
-            if(MonsterManager.instance.monsterCnt == 5) // 출구가 열리는 조건
+            if (MonsterManager.instance.monsterCnt == 5) // 출구가 열리는 조건
             {
                 GameManager.instance.StartCoroutine("ExitOpenText");
                 BoxCollider2D exitCol = GameObject.FindWithTag("Exit").GetComponent<BoxCollider2D>();
@@ -200,7 +244,7 @@ public class Monster : MonoBehaviour
         isMove = false;
         if (PlayerInAttackRange())
         {
-            Shot();
+            Shot();            
         }
         yield return new WaitForSeconds(delayLator);
         isMove = true;
@@ -224,6 +268,35 @@ public class Monster : MonoBehaviour
             return false;
     }
 
+    private void DashPath()
+    {
+        tempPos = targetPos; // 타겟 위치 설정
+        tempDir = targetPos - transform.position;
+
+        GameObject myPattern = Instantiate(pattern
+            , new Vector3(transform.position.x, transform.position.y, transform.position.z)
+            , Quaternion.identity);
+
+        FaceObject(myPattern);
+        myPattern.GetComponentInChildren<Animator>().Play("Normal");
+
+        Destroy(myPattern, 1.3f);
+        
+    }
+
+    IEnumerator Dash()
+    {
+        // 몬스터와 플레이어의 거리 차이가 0.45이하로 붙으면
+        while(Mathf.Abs((Mathf.Abs(transform.position.x) - Mathf.Abs(tempPos.x))) > 0.25 ||
+                 (Mathf.Abs(Mathf.Abs(transform.position.y) - Mathf.Abs(tempPos.y))) > 0.25)
+        {
+            yield return new WaitForSeconds(0.001f);
+            transform.Translate(tempDir.normalized * shotSpeed * Time.deltaTime);
+        }
+
+        yield return new WaitForSeconds(attackCoolTime);
+        isAttack = false;                   
+    }
 
     private void Shot()
     {
@@ -236,17 +309,17 @@ public class Monster : MonoBehaviour
         FaceObject(projectle);
         
         // 타겟 위치로 발사
-        Vector2 ToPlayerDir = targetVec - new Vector3(transform.position.x, transform.position.y);        
+        Vector2 ToPlayerDir = targetPos - new Vector3(transform.position.x, transform.position.y);        
         ProjectileRigid.AddForce(ToPlayerDir.normalized * shotSpeed);              
     }
 
-    // 오브젝트가 대상을 바라보도록 회전
+    // 오브젝트가 플레이어를 바라보도록 회전
     private void FaceObject(GameObject obj)
     {
         float digree;
 
-        digree = Mathf.Atan2(targetVec.y - transform.position.y
-            , targetVec.x - transform.position.x) * 180f / Mathf.PI;
+        digree = Mathf.Atan2(targetPos.y - transform.position.y
+            , targetPos.x - transform.position.x) * 180f / Mathf.PI;
 
         obj.transform.Rotate(0, 0, digree);        
     }
