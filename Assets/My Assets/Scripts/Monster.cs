@@ -43,7 +43,8 @@ public class Monster : MonoBehaviour
 
     private bool isMove = false;
     private bool isPatrol = false;
-    private bool isAttack = false; // 현재 공격중인지
+    public bool isAttack = false; // 현재 공격중인지
+    public bool isPattern = false; // 패턴 발동중에는 공격 중지
 
     private float projectileLiveTime;
     private float shotSpeed;
@@ -131,8 +132,11 @@ public class Monster : MonoBehaviour
                     }
                     if (monsterType != MonsterType.DASH)
                     {
-                        Attack();
-                        checkTime = 0;
+                        if (!isPattern)
+                        {
+                            Attack();
+                            checkTime = 0;
+                        }
                     }
                 }                
                 return;

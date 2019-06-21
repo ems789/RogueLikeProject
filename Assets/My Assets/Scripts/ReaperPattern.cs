@@ -5,6 +5,8 @@ using UnityEngine;
 public class ReaperPattern : MonoBehaviour
 {
     public Animator[] patternList;
+    public Monster Me;
+
     void Start()
     {
         StartCoroutine("RandomPattern");
@@ -20,6 +22,10 @@ public class ReaperPattern : MonoBehaviour
 
             float randomSec = Random.Range(3f, 5f);
             int randNum = Random.Range(0, patternList.Length);
+
+            Me.isPattern = false;
+            yield return new WaitForSeconds(randomSec);
+            Me.isPattern = true;
 
             Animator pattern;
             switch (randNum)
@@ -149,8 +155,6 @@ public class ReaperPattern : MonoBehaviour
                     }
                     break;
             }
-
-            yield return new WaitForSeconds(randomSec);
         }
     }
 }
