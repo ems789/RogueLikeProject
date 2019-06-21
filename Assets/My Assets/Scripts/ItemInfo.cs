@@ -32,13 +32,13 @@ public class ItemInfo : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.name == "MyHero")
+        if (collision.tag == "Player")
             UIManager.instance.HideTooltip();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.name == "MyHero")
+        if (collision.tag == "Player")
         {
             UIManager.instance.ShowDropTooltip(Camera.main.WorldToScreenPoint(transform.position), item); // ui화면에 맞춘 포지션   
             if (equip.SameTypeReturn(item) != null) // 착용한 아이템이 있는 경우
