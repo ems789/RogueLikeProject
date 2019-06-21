@@ -206,7 +206,7 @@ MonoBehaviour:
   patternList:
   - {fileID: 6565654808836631483, guid: 8169655bc2d0d884eb456b26e1fd6507, type: 3}
   - {fileID: 3333710240462049016, guid: 4824617dabf07c545ad1fb7701473db7, type: 3}
-  - {fileID: 6207956359781779455, guid: f1e7d681967be5a488d43917e8f797aa, type: 3}
+  - {fileID: 3709837265563702694, guid: 372510246c351784a946f7834d09f698, type: 3}
   Me: {fileID: 7314361055351775447}
 --- !u!1001 &3506768168621328025
 PrefabInstance:
@@ -292,18 +292,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
         type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
-        type: 3}
       propertyPath: m_Color.b
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6113066251583730498, guid: 213f834bd8aacc04ebe71519d7bdcc60,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 213f834bd8aacc04ebe71519d7bdcc60, type: 3}

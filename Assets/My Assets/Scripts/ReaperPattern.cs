@@ -21,7 +21,7 @@ public class ReaperPattern : MonoBehaviour
             int x = 0, y = 0;
 
             float randomSec = Random.Range(3f, 5f);
-            int randNum = 2;//Random.Range(0, patternList.Length);
+            int randNum = 2;// Random.Range(0, patternList.Length);
 
             Me.isPattern = false;
             yield return new WaitForSeconds(randomSec);
