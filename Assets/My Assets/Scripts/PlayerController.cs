@@ -60,8 +60,11 @@ public class PlayerController : MonoBehaviour
         // 캐릭터 공격               
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if(!isAttack)
+            if (!isAttack)
+            {
+                
                 StartCoroutine("Attack");
+            }
         }
     }
 
